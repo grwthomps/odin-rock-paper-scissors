@@ -3,6 +3,23 @@ function getComputerChoice() {
     return choices[Math.floor(Math.random() * 3)];
 }
 
+function getPlayerChoice() {
+    let response = ""
+    let keepGoing = true
+
+    while (keepGoing == true) {
+        response = prompt("Please enter Rock, Paper, or Scissors:").toLowerCase().trim();
+
+        if (response != "rock" && response != "paper" && response != "scissors") {
+            console.log("I'm sorry, that's not an acceptable input. Please try again.");
+        } else {
+            keepGoing = false;
+        }
+    }
+
+    return response;
+}
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "rock") {
         if (computerSelection == "rock") {
@@ -39,8 +56,6 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 
-// Test functions below:
-
-const playerSelection = "";                                     // add "rock", "paper", or "scissors"
+const playerSelection = getPlayerChoice();
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
